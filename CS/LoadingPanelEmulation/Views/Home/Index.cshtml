@@ -1,0 +1,41 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about DevExpress Extensions for ASP.NET MVC visit <a href="http://devexpress.com/Products/NET/Controls/ASP-NET-MVC/" title="ASP.NET MVC Website">http://devexpress.com/Products/NET/Controls/ASP-NET-MVC/</a>.
+</p>
+
+<script type="text/javascript">
+    function OnSubmitButtonClick(s, e) {
+        loadingPanel.Show();
+    }
+</script>
+
+@using (Html.BeginForm()) {
+    @Html.DevExpress().Button(settings => {
+        settings.Name = "btnSubmit";
+        settings.Text = "Submit form";
+        settings.UseSubmitBehavior = true;
+        settings.ClientSideEvents.Click = "OnSubmitButtonClick";
+    }).GetHtml()
+}
+
+@Html.DevExpress().PopupControl(settings => {
+    settings.Name = "loadingPanel";
+    settings.Modal = true;
+    settings.ShowHeader = false;
+    settings.ShowFooter = false;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.CloseAction = CloseAction.None;
+    settings.SetContent(() => {
+        ViewContext.Writer.Write(
+            "<div style=\"height:30px;\">" +
+                "<img src=\"" + Url.Content("~/Content/loading.gif") + "\" style=\"float:left;padding-left:30px;\"/>" +
+                "<span style=\"padding:10px;float:left;\">Loading...</span>" +
+            "</div>"
+        );
+    });
+}).GetHtml()
