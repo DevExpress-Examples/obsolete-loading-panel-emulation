@@ -1,3 +1,10 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Site.css](./CS/LoadingPanelEmulation/Content/Site.css)
+* [HomeController.cs](./CS/LoadingPanelEmulation/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/LoadingPanelEmulation/Controllers/HomeController.vb))
+* [Index.cshtml](./CS/LoadingPanelEmulation/Views/Home/Index.cshtml)
+<!-- default file list end -->
 # OBSOLETE - How to emulate LoadingPanel using PopupControl (the Razor engine)
 
 
